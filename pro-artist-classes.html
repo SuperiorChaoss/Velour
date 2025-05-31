@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Artist Classes | Velour</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/pro-artist-classes.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <a href="/index.html" class="logo">Velour</a>
+      <nav class="nav-links">
+        <a href="/index.html#services">Services</a>
+        <a href="/index.html#booking">Booking</a>
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#contact">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="section-title">Pro Artist Classes</h1>
+    <p>
+      Hands-on mentorship, expert techniques, and real-world guidance—designed to launch your beauty career.
+    </p>
+    <a href="/index.html#booking" class="btn">Enroll Now</a>
+  </section>
+
+  <!-- Details Section -->
+  <section id="makeup-details">
+    <div class="service-info-stack">
+      <!-- Block 1 -->
+      <div class="service-info-block">
+        <div class="service-info-image">
+          <img src="images/proartisit1.png" alt="Classroom Instruction">
+        </div>
+        <div class="service-info-text">
+          <h2>What's Included</h2>
+          <ul>
+            <li>Hands-on skill workshops</li>
+            <li>Product theory & skin science</li>
+            <li>Portfolio & branding guidance</li>
+            <li>Live model practice & critiques</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Block 2 -->
+      <div class="service-info-block">
+        <div class="service-info-image">
+          <img src="images/pro2.png" alt="Ideal Students">
+        </div>
+        <div class="service-info-text">
+          <h2>Ideal For</h2>
+          <ul>
+            <li>Aspiring makeup artists</li>
+            <li>Beauty entrepreneurs</li>
+            <li>Career-focused creatives</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Combined CTA -->
+  <section class="cta-bar">
+    <div class="cta-content">
+      <h2>Ready to Master the Craft?</h2>
+      <p>
+        From fundamentals to advanced artistry, our classes equip you with the skills and confidence to excel.
+      </p>
+      <div class="cta-buttons">
+        <a href="/index.html#booking" class="btn">Enroll Now</a>
+        <span class="cta-or">OR</span>
+        <a href="/index.html#booking" class="btn btn-outline">Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Velour Skin & Beauty Lounge. All rights reserved.</p>
+    <p style="font-size:0.8rem;opacity:0.7;margin-top:1rem;">
+      This site was created as a design and development sample by 
+      <a href="https://www.pinnacle-sites.com" target="_blank" style="text-decoration:underline;color:inherit;">
+        Pinnacle Sites
+      </a>. Velour Skin & Beauty Lounge is a fictional brand used for portfolio demonstration purposes. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- Scripts (same as homepage) -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', ()=> navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click', ()=> navLinks.classList.remove('active')));
+
+    // date picker (if needed)
+    flatpickr("#date-input", {
+      altInput:true, altFormat:"F j, Y", dateFormat:"Y-m-d", minDate:"today", disableMobile:"true"
+    });
+  </script>
+</body>
+</html>

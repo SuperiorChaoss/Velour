@@ -1,72 +1,750 @@
+
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
 body {
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-            color: #2e2e2e;
-            background-color: #fff8f6;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-            background-color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin: 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-        }
-        .hero {
-            padding: 80px 10%;
-            text-align: center;
-            background-image: url('https://via.placeholder.com/1200x600'); /* Replace with glam image */
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-        }
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        .btn {
-            background-color: #c89fa3;
-            color: #fff;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        section {
-            padding: 60px 10%;
-        }
-        .services, .testimonials {
-            display: flex;
-            gap: 40px;
-        }
-        .service, .testimonial {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-        footer {
-            text-align: center;
-            padding: 40px 10%;
-            background-color: #f4e8e7;
-        }
+  font-family: 'Open Sans', sans-serif;
+  color: #2e2e2e;
+  background-color: #fff8f6;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Translucent Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #9b59b6;
+}
+
+/* Hamburger (Mobile) */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #222;
+}
+
+/* Hero Section */
+/* HERO SLIDESHOW */
+.hero {
+  position: relative;
+  padding: 290px 10% 80px;
+  text-align: center;
+  color: #fff;
+  margin-top: 60px; /* offset fixed navbar */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background: #fff;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  background-color: #c58e93;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* “What We Do” Section */
+#services {
+  padding: 80px 10%;
+  background-color: #fff8f6;
+  text-align: center;
+}
+
+#services .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2e2e2e;
+}
+
+/* Card Container */
+.service-cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual Card */
+.service-card {
+  position: relative;
+  flex: 1 1 280px;
+  max-width: 320px;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+
+/* Overlay with Title + Hidden Detail */
+.service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.service-overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+.service-overlay .service-detail {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  overflow: hidden;
+}
+
+/* On hover or focus reveal the detail */
+.service-card:hover .service-overlay,
+.service-card:focus .service-overlay {
+  background: rgba(0,0,0,0.6);
+}
+.service-card:hover .service-overlay .service-detail,
+.service-card:focus .service-overlay .service-detail {
+  max-height: 100px;
+  opacity: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .service-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Testimonials */
+/* Testimonials Section */
+#testimonials {
+  padding: 80px 10%;
+  background-color: #f4d2c8;
+  text-align: center;
+}
+
+#testimonials .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2e2e2e;
+}
+
+/* Cards Container */
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Individual Testimonial Card */
+.testimonial-card {
+  background-color: #fff;
+  max-width: 300px;
+  flex: 1 1 260px;
+  padding: 24px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Hover Lift Effect */
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Mobile Compact */
+@media (max-width: 768px) {
+  .testimonial-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #testimonials .section-title {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+
+  .testimonial-card {
+    max-width: 90%;
+    padding: 20px;
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 10%;
+  background-color: #f4e8e7;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: block;
+  }
+  .services, .testimonials {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hero {
+    padding-top: 100px;
+  }
+}
+
+/* Hero text glow animation */
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(200,159,163, 0.5), 0 0 10px rgba(200,159,163, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(200,159,163, 1), 0 0 25px rgba(200,159,163, 0.7);
+  }
+}
+
+.hero .hero-content h2,
+.hero .hero-content p {
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  /* Stack cards vertically and center them */
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;       /* a bit tighter than desktop */
+  }
+
+  /* Make each card narrower and shorter */
+  .service-card {
+    max-width: 280px;
+    width: 100%;
+    height: 260px;
+  }
+
+  /* Reduce padding in overlay for more compact text */
+  .service-overlay {
+    padding: 12px;
+  }
+  .service-overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .service-overlay .service-detail {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ===== Pricing Styles ===== */
+/* ===== Pricing Section (Spa Packages) ===== */
+#pricing {
+  padding: 80px 10%;
+  background: #fff;
+  text-align: center;
+}
+#pricing .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2e2e2e;
+}
+.pricing-cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.pricing-card {
+  background: #fdfdfd;
+  flex: 1 1 260px;
+  max-width: 300px;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.pricing-card.featured {
+  border: 2px solid #c89fa3;
+}
+.pricing-card h3 {
+  font-weight: 600;
+  color: #2e2e2e;
+}
+.price-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c89fa3;
+}
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+.pricing-card li::before {
+  content: "✓";
+  margin-right: 8px;
+  color: #c89fa3;
+}
+.pricing-card .btn {
+  margin-top: auto;
+}
+@media (max-width: 768px) {
+  .pricing-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pricing-card {
+    max-width: 90%;
+  }
+}
+
+
+/* ===== About Us Styles ===== */
+#about-us {
+  padding: 80px 10%;
+  background: #fff8f6;
+}
+#about-us .about-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+#about-us img {
+  flex: 1 1 280px;
+  max-width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+#about-us .about-text {
+  flex: 1 1 320px;
+  text-align: left;
+}
+#about-us .btn.outline {
+  background: transparent;
+  border: 2px solid #c89fa3;
+  color: #c89fa3;
+}
+@media (max-width: 768px) {
+  #about-us .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  #about-us .about-text {
+    text-align: center;
+  }
+  .pricing-card {
+    max-width: 90%;
+  }
+}
+
+/* ===== Booking Form Styles ===== */
+.booking-form {
+  display: grid;
+  gap: 20px;
+  max-width: 360px;
+  margin: 0 auto 80px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #2e2e2e;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="time"],
+.booking-form .flatpickr-input {
+  margin-top: 6px;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.booking-form input[type="text"]:focus,
+.booking-form input[type="email"]:focus,
+.booking-form input[type="time"]:focus,
+.booking-form .flatpickr-input:focus {
+  outline: none;
+  border-color: #c89fa3;
+  box-shadow: 0 0 0 3px rgba(200,159,163,0.2);
+}
+
+/* Style the submit button to match .btn but full width */
+.booking-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #c89fa3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.booking-form button:hover {
+  background: #b17c88;
+}
+
+.about-section {
+  position: relative;
+  background-color: #f4d2c8;
+  padding: 5rem 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.about-section .container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+  z-index: 2;
+}
+
+.about-section .section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2e2e2e;
+  font-family: 'Playfair Display', serif;
+}
+
+.about-section .divider {
+  width: 60px;
+  height: 3px;
+  background-color: #c89fa3;
+  margin: 1rem auto 2rem auto;
+  border-radius: 2px;
+}
+
+.about-section .fade-paragraphs {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.about-section .fade-paragraphs.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-section .fade-paragraphs p {
+  font-size: 1.1rem;
+  color: #2e2e2e;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.floral-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/floralbg.png'); /* use your correct file path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.about-card {
+  position: relative;
+  background-color: white;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  min-height: 200px;
+}
+
+.about-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #b8655f;
+}
+
+.about-card .card-front,
+.about-card .card-back {
+  position: absolute;
+  top: 2rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.about-card .card-front {
+  opacity: 1;
+  z-index: 1;
+}
+
+.about-card .card-back {
+  opacity: 0;
+  z-index: 2;
+}
+
+.about-card:hover .card-front,
+.about-card:focus-within .card-front {
+  opacity: 0;
+}
+
+.about-card:hover .card-back,
+.about-card:focus-within .card-back {
+  opacity: 1;
+}
+
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.about-card {
+  position: relative;
+  width: 280px;
+  height: 220px;
+  background-color: white;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem; /* Increased vertical & horizontal padding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  padding: 30px 1rem;
+}
+
+
+.about-card .card-front,
+.about-card .card-back {
+  position: absolute;
+  inset: 0;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  text-align: center;
+}
+
+.about-card .card-front {
+  opacity: 1;
+  z-index: 2;
+}
+
+.about-card .card-back {
+  opacity: 0;
+  z-index: 1;
+}
+
+.about-card:hover .card-front {
+  opacity: 0;
+}
+
+.about-card:hover .card-back {
+  opacity: 1;
+}
+
+.about-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #b8655f;
+  margin-bottom: 0.5rem;
+}
+
+.about-card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+
+.about-card:hover {
+  background-color: #fff3f0;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+.about-card:active {
+  transform: scale(0.98);
+
+}
+#booking h1,
+#booking .section-title {
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-cards {
+    flex-direction: column;
+    align-items: center; /* ✅ Center cards vertically on mobile */
+  }
+
+  .about-card {
+    width: 90%;
+  }
+}
+
+.service-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}

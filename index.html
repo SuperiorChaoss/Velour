@@ -1,68 +1,319 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velour Skin & Beauty Lounge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velour Skin & Beauty Lounge</title>
+  <meta name="description" content="Luxury skincare, makeup, and facial services in your area.">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Flatpickr datepicker CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <style>
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .scroll-track {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 40s linear infinite;
+    }
+    .testimonial-card {
+      display: inline-block;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      width: 400px;
+      margin-right: 2rem;
+      vertical-align: top;
+      white-space: normal;
+    }
+    #testimonial-wrapper:hover .scroll-track {
+      animation-play-state: paused;
+    }
+    @media (max-width: 600px) {
+      .testimonial-card {
+        width: 90vw;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Velour</h1>
-    <nav>
+  <header class="navbar">
+    <div class="container">
+      <a href="/index.html" class="logo">Velour</a>
+      <nav class="nav-links" id="nav-links">
         <a href="#services">Services</a>
         <a href="#booking">Booking</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+        <a href="#booking">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+  </header>
 
-<section class="hero">
-    <h2>Where Beauty Feels Like Silk.</h2>
-    <p>Luxury makeup. Signature skincare. Experiences built around you.</p>
-    <a href="#booking" class="btn">Book Your Experience</a>
-</section>
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>Where Beauty Feels Like Silk.</h2>
+      <p>Luxury makeup. Signature skincare. Experiences built around you.</p>
+      <a href="#booking" class="btn">Book Your Experience</a>
+    </div>
+    <div class="dots" id="hero-dots"></div>
+  </section>
 
 <section id="services">
-    <h2>What We Do</h2>
-    <div class="services">
-        <div class="service">
-            <h3>Signature Makeup</h3>
-            <p>Flawless applications for weddings, events, or elevated everyday looks.</p>
-        </div>
-        <div class="service">
-            <h3>Skin Therapy</h3>
-            <p>Facials and custom treatments tailored to your skin’s needs.</p>
-        </div>
-        <div class="service">
-            <h3>Pro Artist Classes</h3>
-            <p>Learn the craft. Start your beauty career with guided mentorship.</p>
-        </div>
+  <h2 class="section-title">What We Do</h2>
+  <div class="service-cards">
+    <!-- Signature Makeup -->
+   <a href="/signature-makeup.html"
+   class="service-card service-link"
+   style="background-image:url('images/makeup.png')">
+  <div class="service-overlay">
+    <h3>Signature Makeup</h3>
+    <p class="service-detail">
+      Flawless applications for weddings, events, or elevated everyday looks.
+    </p>
+  </div>
+</a>
+
+    <!-- Skin Therapy -->
+     <a href="/skin-therapy.html"
+   class="service-card service-link"
+   style="background-image:url('images/makeup.png')">
+    <div class="service-card" style="background-image:url('images/skincare.png')">
+      <div class="service-overlay">
+        <h3>Skin Therapy</h3>
+        <p class="service-detail">
+          Facials and custom treatments tailored to your skin’s needs.
+        </p>
+      </div>
     </div>
+</a>
+    <!-- Pro Artist Classes -->
+     <a href="/pro-artist-classes.html"
+   class="service-card service-link"
+   style="background-image:url('images/makeup.png')">
+    <div class="service-card" style="background-image:url('images/classes.png')">
+      <div class="service-overlay">
+        <h3>Pro Artist Classes</h3>
+        <p class="service-detail">
+          Learn the craft. Start your beauty career with guided mentorship.
+        </p>
+      </div>
+    </div>
+    </a>
+  </div>
 </section>
 
-<section id="testimonials">
-    <h2>What Clients Say</h2>
-    <div class="testimonials">
-        <div class="testimonial">
-            <p>“It felt like therapy. I walked out glowing inside and out.”</p>
-        </div>
-        <div class="testimonial">
-            <p>“I cried when I saw my wedding look. She’s magic.”</p>
-        </div>
-        <div class="testimonial">
-            <p>“I took the class, and now I’m building my own brand.”</p>
-        </div>
+  <section id="testimonials" style="background-color: #f8d8ce; padding: 4rem 0;">
+    <h2 class="section-title text-center mb-10">What Clients Say</h2>
+    <div id="testimonial-wrapper" style="overflow: hidden; position: relative; white-space: nowrap;">
+      <div id="testimonial-track" class="scroll-track">
+        <div class="testimonial-card">“The facial felt like full body therapy. I walked out glowing inside and out. They are definitely seeing me again!”</div>
+        <div class="testimonial-card">“I cried when I saw my wife's wedding look. She looked like magic.”</div>
+        <div class="testimonial-card">“The class was super informative and practical, and now I’m on the way to building my own brand.”</div>
+        <div class="testimonial-card">“I booked last-minute, but they still made me feel like the only client that day. Truly personal care.”</div>
+        <div class="testimonial-card">“Everything was spotless, serene, and welcoming. You can tell they care about every detail—from the brushes to your breath.”</div>
+        <div class="testimonial-card">“The class reshaped how I see makeup. It wasn’t just technique—it was mindset. I left with skill and whole new mindset.”</div>
+        <div class="testimonial-card">“From the soft music to the final touch of gloss, everything felt intentional. Velour was a whole new experience.”</div>
+        <div class="testimonial-card">“I’ve never felt more confident in my own skin. The artist listened, cared, and delivered beyond what I imagined.”</div>
+      </div>
     </div>
+  </section>
+
+  <section id="pricing">
+    <h2 class="section-title">Our Signature Packages</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Glow Starter</h3>
+        <p class="price-amount">$150</p>
+        <ul>
+          <li>30 min Express Facial</li>
+          <li>Personalized Skin Analysis</li>
+          <li>Hydrating Mask Finish</li>
+        </ul>
+        <a href="#booking" class="btn">Book Now</a>
+      </div>
+      <div class="pricing-card featured">
+        <h3>Radiant Ritual</h3>
+        <p class="price-amount">$250</p>
+        <ul>
+          <li>60 min Deluxe Facial</li>
+          <li>LED Light Therapy</li>
+          <li>Relaxing Neck & Shoulder Massage</li>
+        </ul>
+        <a href="#booking" class="btn">Book Now</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Luxe Experience</h3>
+        <p class="price-amount">$400</p>
+        <ul>
+          <li>90 min Signature Facial</li>
+          <li>Custom Enzyme Peel</li>
+          <li>Makeup Touch-Up & Styling</li>
+        </ul>
+        <a href="#booking" class="btn">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="floral-overlay"></div>
+    <h2 class="section-title typewriter-text" id="typewriter-text"></h2>
+    <div class="divider"></div>
+    <div class="fade-paragraphs" id="about-paragraphs">
+      <p>
+        Velour Skin & Beauty Lounge was created to offer more than services—we deliver an experience. From bridal elegance to self-care rituals, every treatment is built on intention and care. Our artists don’t just apply beauty—they reveal it.
+      </p>
+    </div>
+  </div>
+  <div class="about-cards">
+  <div class="about-card">
+    <h3>Luxury</h3>
+    <p class="card-front">Refined, soft-touch experience.</p>
+    <p class="card-back">Every treatment is designed to feel indulgent—because beauty should never feel rushed.</p>
+  </div>
+  <div class="about-card">
+    <h3>Precision</h3>
+    <p class="card-front">Sharp lines. Clean execution.</p>
+    <p class="card-back">Our artists are trained to enhance, never mask. You’ll see the difference in every stroke.</p>
+  </div>
+  <div class="about-card">
+    <h3>Presence</h3>
+    <p class="card-front">Undivided attention. Total calm.</p>
+    <p class="card-back">We don’t juggle clients—we honor moments. Your time here is yours alone.</p>
+  </div>
+  <div class="about-card">
+    <h3>Elevated Education</h3>
+    <p class="card-front">Beyond beauty school.</p>
+    <p class="card-back">Our classes build confidence, skill, and real-world readiness for aspiring pros.</p>
+  </div>
+  <div class="about-card">
+    <h3>True Care</h3>
+    <p class="card-front">Skin-first, product-second.</p>
+    <p class="card-back">We craft regimens around your skin—not trends. The result? Real, lasting glow.</p>
+  </div>
+</div>
 </section>
+
+<section id="booking">
+  <h2 class="section-title">Book Your Appointment</h2>
+  <form name="booking" method="POST" data-netlify="true" class="booking-form">
+    <input type="hidden" name="form-name" value="booking" />
+    <label>Your Name<input type="text" name="name" required /></label>
+    <label>Your Email<input type="email" name="email" required /></label>
+    <label>Choose Date<input type="text" id="date-input" name="date" placeholder="Select a date" required readonly /></label>
+    <label>Choose Time<input type="time" name="time" required /></label>
+    <button type="submit" class="btn">Book Now</button>
+  </form>
+</section>
+
 
 <footer>
-    <p>&copy; 2025 Velour Skin & Beauty Lounge. All rights reserved.</p>
+  <p>&copy; 2025 Velour Skin & Beauty Lounge. All rights reserved.</p>
+  <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 1rem;">
+    This site was created as a design and development sample by 
+    <a href="https://www.pinnacle-sites.com" target="_blank" style="color: inherit; text-decoration: underline;">Pinnacle Sites</a>. 
+    Velour Skin & Beauty Lounge is a fictional brand used for
+    <a href="https://www.pinnacle-sites.com" target="_blank" style="color: inherit; text-decoration: underline;">Pinnacle Sites</a> 
+    portfolio demonstration purposes. All rights reserved.
+  </p>
 </footer>
+
+
+
+<script>
+  // Mobile nav logic
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Hero image slideshow
+  const slides = ['images/hero1.png','images/hero2.png'];
+  let idx = 0;
+  const hero = document.getElementById('hero');
+  const dotsContainer = document.getElementById('hero-dots');
+  slides.forEach((src, i) => {
+    new Image().src = src;
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.append(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+  hero.style.backgroundImage = `url('${slides[0]}')`;
+  setInterval(() => goToSlide((idx + 1) % slides.length), 5000);
+
+  function goToSlide(i) {
+    idx = i;
+    hero.style.backgroundImage = `url('${slides[idx]}')`;
+    dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+  }
+
+  // Date picker
+  flatpickr("#date-input", {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+    minDate: "today",
+    disableMobile: "true"
+  });
+
+  // Testimonials scroll logic
+  const track = document.getElementById('testimonial-track');
+  let isPaused = false;
+  document.getElementById('testimonial-wrapper').addEventListener('wheel', () => {
+    track.style.animationPlayState = 'paused';
+    clearTimeout(isPaused);
+    isPaused = setTimeout(() => {
+      track.style.animationPlayState = 'running';
+    }, 2000);
+  });
+
+  document.getElementById('testimonial-wrapper').addEventListener('mouseenter', () => {
+    track.style.animationPlayState = 'paused';
+  });
+
+  document.getElementById('testimonial-wrapper').addEventListener('mouseleave', () => {
+    track.style.animationPlayState = 'running';
+  });
+
+  // Typewriter Effect (no repeat) + Reveal paragraphs
+  const typewriter = document.getElementById('typewriter-text');
+  const paragraphs = document.getElementById('about-paragraphs');
+  const text = "Your Beauty. Our Canvas.";
+  let index = 0;
+
+  function typeOnce() {
+    if (index <= text.length) {
+      typewriter.innerHTML = text.substring(0, index++);
+      setTimeout(typeOnce, 100);
+    } else {
+      // Once done typing, reveal paragraphs
+      paragraphs.style.opacity = 1;
+    }
+  }
+
+  typeOnce();
+  
+</script>
 
 </body>
 </html>
