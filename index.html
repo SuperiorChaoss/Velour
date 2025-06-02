@@ -81,7 +81,7 @@
     <!-- Signature Makeup -->
    <a href="/signature-makeup.html"
    class="service-card service-link"
-   style="background-image:url('images/makeup\ copy.png')">
+   style="background-image:url('images/makeup.png')">
   <div class="service-overlay">
     <h3>Signature Makeup</h3>
     <p class="service-detail">
@@ -320,12 +320,11 @@
 
   typeOnce();
   
-const img = new Image();
-img.src = nextImageUrl;
-img.onload = () => {
-  hero.style.backgroundImage = `url(${nextImageUrl})`;
-};
-
+  const images = ['images/hero1.png', 'images/hero2.png'];
+images.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
 
 </script>
 <script>
