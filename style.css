@@ -748,3 +748,58 @@ footer {
   text-decoration: none;
   color: inherit;
 }
+
+#loading-curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff1f2; /* Soft blush pink */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
+
+.logo-wrapper {
+  text-align: center;
+  color: #2e2e2e;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+}
+
+.logo-text {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+.line {
+  width: 300px;
+  height: 2px;
+  background-color: #2e2e2e;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 1s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-text {
+  font-size: 2rem;
+  margin: 20px 0;
+  animation: fadeInUp 1s ease-in-out;
+}
