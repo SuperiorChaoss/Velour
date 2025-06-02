@@ -67,6 +67,7 @@
   </header>
 
   <section class="hero" id="hero">
+    <div class="fade-overlay"></div>
     <div class="hero-content">
       <h2>Where Beauty Feels Like Silk.</h2>
       <p>Luxury makeup. Signature skincare. Experiences built around you.</p>
@@ -334,7 +335,7 @@ function goToSlide(i) {
     hero.style.backgroundImage = `url('${slides[idx]}')`;
     hero.classList.remove('fade-out');
     dots.forEach((d, j) => d.classList.toggle('active', j === idx));
-  }, 300); // fade during image load
+  }, 400);
 }
 
 </script>
