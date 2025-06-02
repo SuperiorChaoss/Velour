@@ -327,6 +327,16 @@ images.forEach(src => {
   img.src = src;
 });
 
+function goToSlide(i) {
+  hero.classList.add('fade-out');
+  setTimeout(() => {
+    idx = i;
+    hero.style.backgroundImage = `url('${slides[idx]}')`;
+    hero.classList.remove('fade-out');
+    dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+  }, 300); // fade during image load
+}
+
 </script>
 <script>
   window.addEventListener("load", function () {

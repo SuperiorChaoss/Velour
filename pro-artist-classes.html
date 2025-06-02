@@ -8,6 +8,15 @@
   <link rel="stylesheet" href="/pro-artist-classes.css" />
 </head>
 <body>
+
+    <div id="loading-curtain">
+  <div class="logo-wrapper">
+    <div class="line"></div>
+    <div class="logo-text">VELOUR</div>
+    <div class="line"></div>
+  </div>
+</div>
+
   <header class="navbar">
     <div class="container">
       <a href="/index.html" class="logo">Velour</a>
@@ -105,5 +114,17 @@
       altInput:true, altFormat:"F j, Y", dateFormat:"Y-m-d", minDate:"today", disableMobile:"true"
     });
   </script>
+
+  <script>
+  window.addEventListener("load", function () {
+    const curtain = document.getElementById("loading-curtain");
+    setTimeout(() => {
+      curtain.style.opacity = "0";
+      setTimeout(() => {
+        curtain.style.display = "none";
+      }, 600); // matches the transition
+    }, 1200); // 1.2s delay before fade starts
+  });
+</script>
 </body>
 </html>
