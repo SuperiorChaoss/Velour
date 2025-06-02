@@ -320,11 +320,12 @@
 
   typeOnce();
   
-  const images = ['1.jpg', '2.jpg'];
-images.forEach(src => {
-  const img = new Image();
-  img.src = src;
-});
+const img = new Image();
+img.src = nextImageUrl;
+img.onload = () => {
+  hero.style.backgroundImage = `url(${nextImageUrl})`;
+};
+
 
 </script>
 <script>
